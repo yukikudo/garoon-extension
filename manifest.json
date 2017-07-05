@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "garoon extension",
+  "version": "0.9.2",
+  "description": "掲示板の閲覧にショートカットキーを使えるようにしました",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+  "tabs", "http://*/*"
+  ],
+  "content_scripts": [
+    {
+      // ポータルトップと最新通知
+      "matches": [
+        "http://garoon.pkm.jp/cgi-bin/cbgrn/grn.cgi/portal/index",
+        "http://garoon.pkm.jp/cgi-bin/cbgrn/grn.cgi/notification/index",
+        "http://garoon.pkm.jp/*"
+      ],
+      //"css": ["css/flick/jquery-ui-1.8.2.custom.css"],
+      "js": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules//jquery-hotkeys/jquery-hotkeys.js",
+        "contentscript.js"
+      ]
+    }
+  ]
+}
