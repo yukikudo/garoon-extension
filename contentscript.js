@@ -67,6 +67,7 @@ try {
      * ※ 画面読み込み時にロードしても良いかも
      */
     var inputM = function() {
+        // TODO: リンクじゃないのにappendしている部分があるように見えるので要調査
         console.log("load meeting room");
         $meetings = $("a[href^='/cgi-bin/cbgrn/grn.cgi/schedule/view']");
         $meetings.each(function(){
@@ -95,10 +96,12 @@ try {
         $(document).on("keydown", null, "j", inputJ);
         $(document).on("keydown", null, "k", inputK);
         $(document).on("keydown", null, "o", inputO);
+        // 会議室読み込みは初回呼び出し時でもいいかも
         $(document).on("keydown", null, "m", inputM);
         // rキーはただのリロード
-        //$(document).on("keydown", null, "r", location.reload());
-        inputM();
+        $(document).on("keydown", null, "r", function() {
+            location.reload()
+        });
     };
 
     // start
